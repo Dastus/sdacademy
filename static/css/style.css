@@ -1,0 +1,11 @@
+.custom_class{color: black}
+.custom_class2{font-size: 24px}
+.custom_class3{padding-left: 40px}
+.padding_class1{padding-left: 10%}
+.padding_class2{text-align: center}
+div img {
+    display: inline-block;
+    padding-left: 45px;
+    width: 225px;
+    height: 200px;
+}
