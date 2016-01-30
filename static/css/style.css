@@ -37,3 +37,8 @@ div img {
   height: 60px;
   background-color: #f5f5f5;
 }
+.custom_table1 { background-color: #dff0d8;
+    width: 40%}
+
+td{padding-left:  15px;}
+th{text-align: center; background-color: #5cb85c}
