@@ -39,6 +39,10 @@ div img {
 }
 .custom_table1 { background-color: #dff0d8;
     width: 40%}
+.custom_table2 { border: 1px solid black}
+.custom_table3 { border: 1px solid black}
+.custom_table4 { width: 70%}
 
+table, td, th { border: 1px solid gray }
 td{padding-left:  15px;}
 th{text-align: center; background-color: #5cb85c}
