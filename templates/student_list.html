@@ -8,8 +8,9 @@
     <title>SD Academy: Students List</title>
 
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,14 +30,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">SD Academy</a>
+      <a class="navbar-brand" href="{% url 'index' %}">SD Academy</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="index.html">Main</a></li>
-        <li><a href="contact.html">Contacts</a></li>
-        <li class="active"><a href="#">Students<span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url 'index' %}">Main</a></li>
+        <li><a href="{% url 'contact' %}">Contacts</a></li>
+        <li class="active"><a href="{% url 'student_list' %}">Students<span class="sr-only">(current)</span></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -49,7 +50,7 @@
     <tr><th>No</th><th>Surname</th><th>Name</th><th>Address</th><th>Skype</th></tr>
   </thead>
   <tbody data-link="row" class="rowlink">
-    <tr><td><a href="student_detail.html">1</a></td><td>Holyar</td><td>Leks</td><td>Lviv, Geroiv UPA 7</td><td>scrummaster</td></tr>
+    <tr><td><a href="/student_detail">1</a></td><td>Holyar</td><td>Leks</td><td>Lviv, Geroiv UPA 7</td><td>scrummaster</td></tr>
     <tr><td>2</td><td>Garazh</td><td>Yurets</td><td>Kharkiv, Serpovaya, 4</td><td>partyhard</td></tr>
     <tr><td>3</td><td>Vorontsov</td><td>Serhio</td><td>Kharkiv, Konstitutsii Square, 7</td><td>larva</td></tr>
     <tr><td>4</td><td>Kushnaryov</td><td>Stanislas</td><td>Kharkiv, Oleksandra Matrosova St, 3А</td><td>sociologist</td></tr>
@@ -64,6 +65,6 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
   </body>
 </html>
