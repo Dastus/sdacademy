@@ -5,9 +5,9 @@ from django.http import HttpResponse
 import math
 
 def quadratic_results(request):
-    a = request.GET.get('a')
-    b = request.GET.get('b')
-    c = request.GET.get('c')
+    a = request.GET.get('a','')
+    b = request.GET.get('b','')
+    c = request.GET.get('c','')
     a_err = ''
     b_err = ''
     c_err = ''
