@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -42,6 +43,7 @@
 </nav>
   <div class="container">
     <h1>SDAcademy Course Description</h1>
+    <h1><a href={{a}}></h1>
   </div>
   <div class="container">
     <h3>What is this course about?</h3>
@@ -52,12 +54,15 @@
    </div>
   <div class="container">
     <h3>Program</h3>
-      {% for item in courses_all %}
+    <div class="container">
+      {% for item in lessons_all %}
         <tr>
-            <td><a class="trselect b" href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></td>
-            <td>{{ item.short_description }}<br></td>
+            <td>{{ item.order }}</td>
+            <td>{{ item.subject }}</td>
+            <td>{{ item.description }}<br></td>
         </tr>
       {% endfor %}
+    </div>
   </div>
     <div class="panel-footer padding_class3">
       <h3>Recomendations:</h3>

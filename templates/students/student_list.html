@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>SD Academy - Main</title>
+    <title>SD Academy: Students List</title>
+
     <!-- Bootstrap -->
     {% load staticfiles %}
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -18,7 +20,7 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-default" >
+    <nav class="navbar navbar-default">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -33,44 +35,33 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'index' %}">Main<span class="sr-only">(current)</span></a></li>
+        <li><a href="{% url 'index' %}">Main</a></li>
         <li><a href="{% url 'contact' %}">Contacts</a></li>
-        <li><a href="{% url 'student_list' %}">Students</a></li>
+        <li class="active"><a href="{% url 'student_list' %}">Students<span class="sr-only">(current)</span></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-  <div class="container">
-    <h1>SDAcademy Course Description</h1>
-  </div>
-  <div class="container">
-    <h3>What is this course about?</h3>
-  </div>
-  <div class="container">
-    <p><br>You will obtain basic essential knowledges which will allow you to be BE developer.<br>
-    Also you will learn how to use git and learn web-pages creation basics.</p>
-   </div>
-  <div class="container">
-    <h3>Program</h3>
-      {% for item in courses_all %}
-        <tr>
-            <td><a class="trselect b" href="{% url 'courses:detail' item.id %}">{{ item.name }}</a></td>
-            <td>{{ item.short_description }}<br></td>
-        </tr>
-      {% endfor %}
-  </div>
-    <div class="panel-footer padding_class3">
-      <h3>Recomendations:</h3>
-    </div>
-  <div class="container">
-    <p>We'd recommend you to use following matherials for additional info:</p>
-    <a class="custom_class4" href="https://www.python.org/">Python Official Site</a><br>
-    <a class="custom_class5" href="http://getbootstrap.com/">Bootstrap Official Site</a><br>
-    <a class="custom_class6" href="https://www.djangoproject.com/">Django Official Site</a>
-   </div>
-  <footer class="footer">
-    <p>Made for SDAcadey in 2016</p>
-  </footer>
+<div class="container">
+ <h1>SDAcademy students</h1>
+ <p>List of students enrolled into our course in 2015</p>
+<table class="table table-striped table-bordered table-hover custom_table2">
+  <thead>
+    <tr><th>No</th><th>Surname</th><th>Name</th><th>Address</th><th>Skype</th></tr>
+  </thead>
+  <tbody data-link="row" class="rowlink">
+    <tr><td><a href="{% url 'student_detail' %}">1</a></td><td>Holyar</td><td>Leks</td><td>Lviv, Geroiv UPA 7</td><td>scrummaster</td></tr>
+    <tr><td>2</td><td>Garazh</td><td>Yurets</td><td>Kharkiv, Serpovaya, 4</td><td>partyhard</td></tr>
+    <tr><td>3</td><td>Vorontsov</td><td>Serhio</td><td>Kharkiv, Konstitutsii Square, 7</td><td>larva</td></tr>
+    <tr><td>4</td><td>Kushnaryov</td><td>Stanislas</td><td>Kharkiv, Oleksandra Matrosova St, 3А</td><td>sociologist</td></tr>
+    <tr><td>5</td><td>Legend</td><td>Nameless</td><td>Kharkiv</td><td>prod_fw_opener</td></tr>
+  </tbody>
+</table>
+
+</div>
+<footer class="footer">
+  <p>Made for SDAcadey in 2016</p>
+</footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
