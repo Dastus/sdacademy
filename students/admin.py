@@ -9,4 +9,5 @@ class StudentAdmin(admin.ModelAdmin):
                  ('Contact info', {'fields': ['email', 'phone', 'address', 'skype']}),
                  (None, {'fields':['courses']})]
     filter_horizontal = ('courses',)
+    search_fields = ['surname', 'email']
 admin.site.register(Student, StudentAdmin)
