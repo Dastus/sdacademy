@@ -45,7 +45,7 @@
      <tr><td>Address</td><td>{{ item.address }}</td></tr>
      <tr><td>E-mail</td><td>{{ item.email }}</td></tr>
      <tr><td>Skype</td><td>{{ item.skype }}</td></tr>
-     <tr><td>Skype</td>
+     <tr><td>Courses</td>
          <td>
          {% for i in item.courses.all %}
              <a href="{% url 'courses:detail' i.id %}">{{ i }}<br></a>

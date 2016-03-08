@@ -72,7 +72,7 @@
         <td>#</td><td>Theme</td><td>Description</td>
       {% for item in lessons_all %}
         <tr>
-            <td>{{ item.order }}</td>
+            <td>{{ forloop.counter }}</td>
             <td>{{ item.subject }}</td>
             <td>{{ item.description }}<br></td>
         </tr>
