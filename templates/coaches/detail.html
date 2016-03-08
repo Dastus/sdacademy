@@ -52,7 +52,7 @@
          {% for item in course_coach %}
             <a href="{% url 'courses:detail' item.id %}"> {{ item }}</a> course students
              <a href="{% url 'students:list_view' %}?course_id={{ item.id }}">
-                 <span class="glyphicon glyphicon-th-list"</span>
+                 <span class="glyphicon glyphicon-th-list"></span>
              </a>
          {% endfor %}
         </td>
@@ -61,7 +61,10 @@
          <td>Courses Assistant</td>
          <td>
              {% for item in course_assistant %}
-                {{ item }}
+                <a href="{% url 'courses:detail' item.id %}"> {{ item }}</a> course students
+                <a href="{% url 'students:list_view' %}?course_id={{ item.id }}">
+                 <span class="glyphicon glyphicon-th-list"></span>
+             </a>
              {% endfor %}
          </td>
      </tr>
