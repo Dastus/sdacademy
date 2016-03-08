@@ -45,6 +45,23 @@
     <h1>SDAcademy Course Description</h1>
   </div>
   <div class="container">
+    <h2>Teachers</h2>
+    <div>
+      <h3>Coach</h3>
+      {% for item in courses %}
+        <a href="{% url 'coaches:detail' item.coach.id %}">{{ coach_fullname }}</a><br>
+        {{ item.coach.description }}
+      {% endfor %}
+    </div>
+    <div>
+      <h3>Assistant</h3>
+      {% for item in courses %}
+        <a href="{% url 'coaches:detail' item.assistant.id %}">{{ assistant_fullname }}</a><br>
+        {{ item.assistant.description }}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="container">
     <h3>Course Plan</h3>
     <div class="container">
       <table class="table table-striped table-bordered table-hover custom_table2">
