@@ -39,7 +39,7 @@ def quadratic_results(request):
         c = str(c) + c_err
 
 
-    return  render(request, 'results.html', {'a': a, 'b': b, 'c': c, 'discriminant': discriminant,
+    return  render(request, 'quadratic/results.html', {'a': a, 'b': b, 'c': c, 'discriminant': discriminant,
                                              'final_res': final_res, 'a_err': a_err,
                                              'b_err': b_err, 'c_err': c_err, 'form': form})
 
