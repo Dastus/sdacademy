@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.http import HttpResponse
+#from django.http import HttpResponse
+from quadratic.forms import QuadraticForm
 import math
 
 def quadratic_results(request):
+    form = QuadraticForm()
+    if request.method == 'GET' and request.GET.keys():
+        form = QuadraticForm(request.GET)
     a = request.GET.get('a','')
     b = request.GET.get('b','')
     c = request.GET.get('c','')
@@ -34,8 +38,10 @@ def quadratic_results(request):
         b = str(b) + b_err
         c = str(c) + c_err
 
+
     return  render(request, 'results.html', {'a': a, 'b': b, 'c': c, 'discriminant': discriminant,
-                                             'final_res': final_res, 'a_err': a_err, 'b_err': b_err, 'c_err': c_err})
+                                             'final_res': final_res, 'a_err': a_err,
+                                             'b_err': b_err, 'c_err': c_err, 'form': form})
 
 def validator_first(val, val_err):
     if val != '':
@@ -46,7 +52,7 @@ def validator_first(val, val_err):
         except ValueError:
             val_err = "коэффициент не целое число"
     else:
-        val_err = "коэффициент не определен"
+        val_err = None
     return val_err
 
 def validator_other(val, val_err):
@@ -56,5 +62,5 @@ def validator_other(val, val_err):
         except ValueError:
             val_err = "коэффициент не целое число"
     else:
-        val_err = "коэффициент не определен"
+        val_err = None
     return val_err
