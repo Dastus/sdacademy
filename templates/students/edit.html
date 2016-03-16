@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title_block %}SD Academy: Edit Student{% endblock %}
+
+
+{% block active_block_student %}active{% endblock %}
+
+{% load staticfiles %}
+{% block content%}
+<div class="container">
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1>Edit student</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <input value='Apply Changes' type='submit'>
+    </form>
+</div>
+{% endblock content%}

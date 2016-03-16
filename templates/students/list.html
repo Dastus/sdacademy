@@ -5,13 +5,24 @@
 
 {% block active_block_student %}active{% endblock %}
 
-{% load staticfiles %}
+
 {% block content %}
 <div class="container">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form action="{% url 'students:add' %}">
+        <input type="submit" value="Add new student">
+    </form>
  <h1>SDAcademy students</h1>
 <table class="table table-striped table-bordered table-hover custom_table2">
   <thead>
-    <tr><th>#</th><th>Surname Name</th><th>Address</th><th>Skype</th><th>Courses</th></tr>
+    <tr><th>#</th><th>Surname Name</th><th>Address</th><th>Skype</th><th>Courses</th><th></th></tr>
   </thead>
   <tbody data-link="row" class="rowlink">
   {% for item in students_all %}
@@ -25,9 +36,18 @@
               <a class="trselect b" href="{% url 'courses:detail' i.id %}">{{ i }}<br></a>
               {% endfor %}
             </td>
-
+            <td>
+                <form action="{% url 'students:edit' item.pk %}">
+                    <input type="submit" value="Edit">
+                </form><br>
+                <form action="{% url 'students:remove' item.pk %}">
+                    <input type="submit" value="Remove">
+                </form>
+            </td>
         </tr>
   {% endfor %}
   </tbody>
 </table>
+</div>
+<div>some text</div>
 {% endblock %}
