@@ -8,7 +8,7 @@
 {% load staticfiles %}
 {% block content%}
 <div class="container">
-    <h1>Student {{ credentials }} will be removed</h1>
+    <h1>Student {{ name }} {{ surname}} will be removed</h1>
     <form method="post">
         {% csrf_token %}
     <input value='Remove' type='submit'>
