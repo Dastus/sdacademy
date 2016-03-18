@@ -11,12 +11,11 @@
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-        {{ message }}</li>
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
     </ul>
     {% endif %}
-    <form action="{% url 'students:add' %}">
+    <form action="/students/add">
         <input type="submit" value="Add new student">
     </form>
  <h1>SDAcademy students</h1>
@@ -49,5 +48,4 @@
   </tbody>
 </table>
 </div>
-<div>some text</div>
 {% endblock %}
