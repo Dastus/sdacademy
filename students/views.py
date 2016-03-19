@@ -52,7 +52,6 @@ def edit(request, student_id):
 
 def remove(request, student_id):
     student = Student.objects.get(pk=student_id)
-    #credentials = "%s %s" % (student.name, student.surname)
     if request.method == 'POST':
         student.delete()
         messages.success(request, 'Info on %s %s has been sucessfully deleted.' % (student.name, student.surname))
