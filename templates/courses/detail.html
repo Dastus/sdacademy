@@ -9,8 +9,7 @@
 {% if messages %}
     <ul class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-        {{ message }}</li>
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
         {% endfor %}
     </ul>
 {% endif %}
@@ -32,15 +31,19 @@
     <div>
       <h3>Coach</h3>
       {% for item in courses %}
-        <a href="{% url 'coaches:detail' item.coach.id %}">{{ coach_fullname }}</a><br>
+        {% if item.coach %}
+        <a href="{% url 'coaches:detail' item.coach.id %}">{{ item.coach.user.first_name }} {{ item.coach.user.last_name }}</a><br>
         {{ item.coach.description }}
+        {% endif %}
       {% endfor %}
     </div>
     <div>
       <h3>Assistant</h3>
       {% for item in courses %}
-        <a href="{% url 'coaches:detail' item.assistant.id %}">{{ assistant_fullname }}</a><br>
+        {% if item.assistant %}
+        <a href="{% url 'coaches:detail' item.assistant.id %}">{{ item.assistant.user.first_name }} {{ item.assistant.user.last_name }}</a><br>
         {{ item.assistant.description }}
+        {% endif %}
       {% endfor %}
     </div>
 </div>
