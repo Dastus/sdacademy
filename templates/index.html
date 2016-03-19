@@ -34,6 +34,7 @@
             <td><a class="trselect b" href="{% url 'courses:detail' item.id %}">{{ item.name|upper }}</a></td>
             <td>{{ item.short_description|title }}<br></td>
             <td>
+                <a href="{% url 'courses:edit' item.id %}">Edit</a><br>
                 <a href="{% url 'courses:remove' item.id %}">Delete</a>
             </td>
         </tr>

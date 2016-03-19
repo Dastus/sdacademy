@@ -16,16 +16,17 @@
 {% endif %}
 
 
-{% include "include/course_include.html" %}
-
-
 {% load staticfiles %}
-{% for item in courses %}
+    {% for item in courses %}
 <div class="container">
+    <div class="jumbotron">
     <h1>{{ item.name }}</h1>
-  <div class="container">{{ item.description|truncatechars:32 }}</div>
-    {% endfor %}
+  <p>{{ item.description|truncatechars:32 }}</p>
+    </div>
 </div>
+    {% endfor %}
+
+
 <div class="container">
     <h2>Teachers</h2>
     <div>
@@ -47,7 +48,9 @@
     <h3>Course Plan</h3>
     <div>
     {% for item in courses %}
-    <a href="{% url 'courses:add_lesson' item.pk %}">Add Lesson</a>
+        <form action="{% url 'courses:add-lesson' item.pk %}">
+            <input type="submit" value="Add Lesson">
+        </form>
     {% endfor %}
     </div>
     <div class="container">
