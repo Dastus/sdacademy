@@ -11,7 +11,7 @@
     <h1>Student {{ object.name }} {{ object.surname }} will be removed</h1>
     <form method="post">
         {% csrf_token %}
-    <input value='Remove' type='submit'>
+    <input class="btn btn-primary" value='Remove' type='submit'>
     </form>
 </div>
 {% endblock content%}

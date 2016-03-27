@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title_block %}SD Academy: Add Student{% endblock %}
+{% block title_block %} {{ title }} {% endblock %}
 
 
 {% block active_block_student %}active{% endblock %}
@@ -16,3 +16,6 @@
     </form>
 </div>
 {% endblock content%}
+
+
+{% block footer_block %}position: absolute{% endblock %}

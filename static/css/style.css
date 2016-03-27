@@ -29,8 +29,10 @@ div img {
     height: 200px;
 }
 .footer {
-  padding-right:15px;padding-left:15%;
-  position: absolute;
+  padding-right:15px;
+  padding-left:15%;
+  padding-top:20px;
+  position: relative;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
@@ -45,4 +47,6 @@ div img {
 
 table, td, th { border: 1px solid gray }
 td{padding-left:  15px;}
-th{text-align: center; background-color: #5cb85c}
+th{text-align: center; background-color: #66CCFF}
+
+

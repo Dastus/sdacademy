@@ -5,6 +5,7 @@
 
 {% block content %}
 
+{% block active_block_main %}active{% endblock %}
 
 {% if messages %}
     <ul class="messages">
@@ -51,9 +52,9 @@
     <h3>Course Plan</h3>
     <div>
     {% for item in courses %}
-        <form action="{% url 'courses:add-lesson' item.pk %}">
+        <form action="{% url 'courses:add-lesson' item.pk %}" style="padding-left:15px">
             <input type="submit" value="Add Lesson">
-        </form>
+        </form><br>
     {% endfor %}
     </div>
     <div class="container">

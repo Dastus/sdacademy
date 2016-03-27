@@ -13,14 +13,6 @@ def detail(request, course_id):
     lessons_all = Lesson.objects.filter(course=courses)
     return render(request, 'courses/detail.html', {'courses': courses, 'lessons_all': lessons_all,
                                                       'particular_course':course.id, 'course':course,})
-    '''
-    coach_fullname = course.coach.user.get_full_name()
-    assistant_fullname = course.assistant.user.get_full_name()
-    return render(request, 'courses/detail.html', {'courses': courses, 'lessons_all': lessons_all,
-                                                      'particular_course':course.id, 'course':course ,
-                                                   'coach_fullname': coach_fullname,
-                                                   'assistant_fullname':assistant_fullname })
-                                                   '''
 
 
 def add(request):

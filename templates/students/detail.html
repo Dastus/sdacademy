@@ -8,24 +8,24 @@
 {% load staticfiles %}
 {% block content%}
 <div class="container">
-     {% for item in student %}
-     <h1>{{ item.surname }} {{ item.name }}</h1>
+
+     <h1>{{ student.surname }} {{ student.name }}</h1>
      <h3>Student's card</h3>
  <table  class="custom_table1 custom_table2">
-     <tr><td>Surname</td><td>{{ item.surname }}</td></tr>
-     <tr><td>Name</td><td>{{ item.name }}</td></tr>
-     <tr><td>Birth Date</td><td>{{ item.date_of_birth }}</td></tr>
-     <tr><td>Address</td><td>{{ item.address }}</td></tr>
-     <tr><td>E-mail</td><td>{{ item.email }}</td></tr>
-     <tr><td>Skype</td><td>{{ item.skype }}</td></tr>
+     <tr><td>Surname</td><td>{{ student.surname }}</td></tr>
+     <tr><td>Name</td><td>{{ student.name }}</td></tr>
+     <tr><td>Birth Date</td><td>{{ student.date_of_birth }}</td></tr>
+     <tr><td>Address</td><td>{{ student.address }}</td></tr>
+     <tr><td>E-mail</td><td>{{ student.email }}</td></tr>
+     <tr><td>Skype</td><td>{{ student.skype }}</td></tr>
      <tr><td>Courses</td>
          <td>
-         {% for i in item.courses.all %}
+         {% for i in student.courses.all %}
              <a href="{% url 'courses:detail' i.id %}">{{ i }}<br></a>
          {% endfor %}
          </td>
      </tr>
-     {% endfor %}
+
  </table>
 </div>
 {% endblock content%}

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title_block %}SD Academy: Edit Student{% endblock %}
+{% block title_block %} {{ title }} {% endblock %}
 
 
 {% block active_block_student %}active{% endblock %}
@@ -21,12 +21,13 @@
     </div>
 </div>
 {% endif %}
+
 <div class="container">
-    <h1>Edit student</h1>
+    <h1>{{ title }}</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-    <input value='Apply Changes' type='submit'>
+    <input class="btn btn-primary" value='Submit' type='submit'>
     </form>
 </div>
 {% endblock content%}
