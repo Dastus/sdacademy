@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'courses',
     'students',
     'coaches',
+    'feedbacks',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -68,6 +69,14 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+ADMINS = (('Admin', 'dastus44@gmail.com'),)
+SERVER_EMAIL = 'notify@sdacademy.org'
+EMAIL_SUBJECT_PREFIX = '[SDAcademy]'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/

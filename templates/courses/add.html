@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title_block %}SD Academy : Course Add{% endblock %}
+{% block title_block %}{{ title }}{% endblock %}
 
 {% block active_block_main %}active{% endblock %}
 
@@ -8,13 +8,13 @@
 
 {% load staticfiles %}
 <div class="container">
-    <h1>Add New Course</h1>
+    <h1>{{ title }}</h1>
 </div>
 <div class="container">
 <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-    <input value='Create Course' type='submit'>
+    <input class="btn btn-primary btn" value='Create Course' type='submit'>
 </form>
 </div>
 {% endblock %}

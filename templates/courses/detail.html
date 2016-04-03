@@ -1,63 +1,71 @@
 {% extends "base.html" %}
 
+
 {% block title_block %}SD Academy : Course details{% endblock %}
+
+
+{% block active_block_main %}active{% endblock %}
+
+
+{% block student_filter %}?course_id={{ course.id }}{% endblock %}
 
 
 {% block content %}
 
-{% block active_block_main %}active{% endblock %}
+
 
 {% if messages %}
+<div class="container">
+    <div class="alert alert-success fade in">
     <ul class="messages">
         {% for message in messages %}
-        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
         {% endfor %}
     </ul>
+    </div>
+</div>
 {% endif %}
 
 
 {% load staticfiles %}
-    {% for item in courses %}
+
 <div class="container">
     <div class="jumbotron">
-    <h1>{{ item.name }}</h1>
-  <p>{{ item.description|truncatechars:32 }}</p>
+    <h1>{{ course.name }}</h1>
+  <p>{{ course.description|truncatechars:32 }}</p>
+        <a href="{% url 'students:list_view'  %}?course_id={{ course.id }}">Students on this course.</a>
     </div>
 </div>
-    {% endfor %}
+
 
 
 <div class="container">
     <h2>Teachers</h2>
     <div>
       <h3>Coach</h3>
-      {% for item in courses %}
-        {% if item.coach %}
-        <a href="{% url 'coaches:detail' item.coach.id %}">{{ item.coach.user.first_name }} {{ item.coach.user.last_name }}</a><br>
-        {{ item.coach.description }}
+
+        {% if course.coach %}
+        <a href="{% url 'coaches:detail' course.coach.id %}">{{ course.coach.user.first_name }} {{ course.coach.user.last_name }}</a><br>
+        {{ course.coach.description }}
         {% endif %}
-      {% endfor %}
+
     </div>
     <div>
       <h3>Assistant</h3>
-      {% for item in courses %}
-        {% if item.assistant %}
-        <a href="{% url 'coaches:detail' item.assistant.id %}">{{ item.assistant.user.first_name }} {{ item.assistant.user.last_name }}</a><br>
-        {{ item.assistant.description }}
+
+        {% if course.assistant %}
+        <a href="{% url 'coaches:detail' course.assistant.id %}">{{ course.assistant.user.first_name }} {{ course.assistant.user.last_name }}</a><br>
+        {{ course.assistant.description }}
         {% endif %}
-      {% endfor %}
+
     </div>
 </div>
 <div class="container">
     <h3>Course Plan</h3>
-    <div>
-    {% for item in courses %}
-        <form action="{% url 'courses:add-lesson' item.pk %}" style="padding-left:15px">
-            <input type="submit" value="Add Lesson">
-        </form><br>
-    {% endfor %}
-    </div>
-    <div class="container">
+    <form action="{% url 'courses:add-lesson' course.pk %}">
+        <input type="submit" class="btn btn-primary" value="Add Lesson">
+    </form><br>
       <table class="table table-striped table-bordered table-hover custom_table2">
         <td>#</td><td>Theme</td><td>Description</td>
       {% for item in lessons_all %}
@@ -68,7 +76,7 @@
         </tr>
       {% endfor %}
       </table>
-    </div>
+
 </div>
 {% endblock %}
 

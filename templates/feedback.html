@@ -4,13 +4,13 @@
 {% block title_block %}{{ title }}{% endblock %}
 
 
-{% block active_block_main %}active{% endblock %}
+{% block active_block_feedback %}active{% endblock %}
 
 
 {% block content %}
 
-
 {% load staticfiles %}
+
 {% if messages %}
 <div class="container">
     <div class="alert alert-success fade in">
@@ -27,14 +27,13 @@
     <h1>{{ title }}</h1>
 </div>
 <div class="container">
-<form method="post">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-    <input value='Apply Changes' class="btn btn-primary" type='submit'>
-</form>
+    <input class="btn btn-primary btn" value='Submit Feedback' type='submit'>
+    </form>
 </div>
 {% endblock %}
 
 
 {% block footer_block %}position: absolute{% endblock %}
-

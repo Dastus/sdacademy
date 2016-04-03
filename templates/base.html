@@ -29,7 +29,8 @@
       <ul class="nav navbar-nav">
         <li class="{% block active_block_main %}{% endblock %}"><a href="{% url 'index' %}">Main</a></li>
         <li class="{% block active_block_contact %}{% endblock %}"><a href="{% url 'contact' %}">Contacts</a></li>
-        <li class="{% block active_block_student %}{% endblock %}"><a href="{% url 'students:list_view'  %}">Students</a></li>
+        <li class="{% block active_block_student %}{% endblock %}"><a href="{% url 'students:list_view'  %}{% block student_filter %}{% endblock %}">Students</a></li>
+        <li class="{% block active_block_feedback %}{% endblock %}"><a href="/feedback">Feedback</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -42,14 +43,7 @@
   </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script>
-$(document).ready(function(){
-  $("#jmbTrn").click(function(e){
-    $(this).hide();
-  });
-});
-</script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>    
 </body>
 </html>
 

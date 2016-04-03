@@ -38,7 +38,7 @@
 
     <h3>Program</h3>
     <table class="table table-striped table-bordered table-hover custom_table2">
-      <td>Course</td><td>Decription<br></td><td></td>
+      <td>Course</td><td>Description<br></td><td></td>
       {% for item in courses_all %}
         <tr>
             <td><a class="trselect b" href="{% url 'courses:detail' item.id %}">{{ item.name|upper }}</a></td>

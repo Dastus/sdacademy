@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from .models import Student
 from .forms import StudentModelForm
 from django import forms
@@ -8,18 +8,21 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 class StudentDetailView(DetailView):
     model = Student
     context_object_name = "student"
     template_name = "students/detail.html"
+    paginate_by = 2
 
 
 class StudentListView(ListView):
     model = Student
     template_name = "students/list.html"
     context_object_name = "students"
+    paginate_by = 2
 
     def get_queryset(self):
         course_id = self.request.GET.get('course_id', None)
@@ -28,6 +31,23 @@ class StudentListView(ListView):
         else:
             students = Student.objects.all()
         return students
+
+    def get_context_data(self, **kwargs):
+        context = super(StudentListView, self).get_context_data(**kwargs)
+        student_list = Student.objects.all()
+        paginator = Paginator(student_list, self.paginate_by)
+
+        page = self.request.GET.get('page')
+
+        try:
+            student_lists = paginator.page(page)
+        except PageNotAnInteger:
+            student_lists = paginator.page(1)
+        except EmptyPage:
+            student_lists = paginator.page(paginator.num_pages)
+
+        context['student_lists'] = student_lists
+        return context
 
 
 class StudentCreateView(CreateView):
@@ -73,7 +93,10 @@ class StudentDeleteView(DeleteView):
         context = super(StudentDeleteView, self).get_context_data(**kwargs)
         title = "Student info suppression"
         context['title'] = title
+        return context
+
+    def get_success_url(self):
         student = super(StudentDeleteView, self).get_object()
         message = ('Info on %s %s has been sucessfully deleted.' % (student.name, student.surname))
         messages.success(self.request, message)
-        return context
+        return reverse('index')

@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
+
 {% block title_block %}SD Academy : Students List{% endblock %}
 
 
 {% block active_block_student %}active{% endblock %}
+
+
+{% block footer_block %}position: absolute{% endblock %}
 
 
 {% block content %}
@@ -57,5 +61,21 @@
   {% endfor %}
   </tbody>
 </table>
+
+{% if is_paginated %}
+ <ul class="pagination nav navbar-nav">
+    {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}"><< previous</a></li>
+    {% endif %}
+    {% for page in page_obj.paginator.page_range %}
+        <li class="{% if page_obj.number == page  %}active{% endif %}"><a href="?page={{page }}">{{ page }}</a></li>
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <li> <a href="?page={{ page_obj.next_page_number }}">>> next</a></li>
+    {% endif %}
+ </ul>
+{% endif %}
+
 </div>
 {% endblock %}
