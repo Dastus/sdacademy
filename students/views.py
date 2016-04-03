@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from .models import Student
+from courses.models import Course
 from .forms import StudentModelForm
 from django import forms
 from django.contrib import messages
@@ -34,19 +35,25 @@ class StudentListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(StudentListView, self).get_context_data(**kwargs)
-        student_list = Student.objects.all()
+        course_id = self.request.GET.get('course_id', None)
+        course_name = None
+        if course_id:
+            student_list = Student.objects.filter(courses__id=course_id)
+            course = Course.objects.get(id=course_id)
+            course_name = course.name
+        else:
+            student_list = Student.objects.all()
         paginator = Paginator(student_list, self.paginate_by)
-
         page = self.request.GET.get('page')
-
         try:
             student_lists = paginator.page(page)
         except PageNotAnInteger:
             student_lists = paginator.page(1)
         except EmptyPage:
             student_lists = paginator.page(paginator.num_pages)
-
         context['student_lists'] = student_lists
+        context['course_id'] = course_id
+        context['course_name'] = course_name
         return context
 
 
